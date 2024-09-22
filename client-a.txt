@@ -2,3 +2,20 @@
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
 
+random_number = get_random_number(1, 10)
+try_number = 0
+
+while try_number < 3
+{
+	output("Can you guess the number?")
+	guess = get_input()
+	if guess == random_number
+	{
+		output("You win!")
+		exit
+	}
+	output("Sorry, that's not correct.")
+	try_number++
+}
+output("You lose.")
+exit

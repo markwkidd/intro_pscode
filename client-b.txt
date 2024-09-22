@@ -2,3 +2,33 @@
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
 
+output("What item are you looking for?")
+item_name		= get_input()
+database_record		= database_lookup(item_name)
+destination_row		= database_record.row
+destination_aisle 	= database_record.aisle
+
+output("The item is located at row: ", destination_row, " aisle: ", destination_aisle)
+
+while (destination_row != gps_row)
+{
+	output("Press enter when you are ready for your next direction.")
+	get_input()								// don't save this input into a variable
+	gps_row = detect_current_customer_row() // determine where the customer is via sensor
+	if gps_row < destination_row
+		please_walk("west")					// ask the customer to move west, the rows increase in number as they move in the westward direction.
+	else
+		please_walk("east")
+}
+while (destination_aisle != gps_aisle)
+{
+	output("Press enter when you are ready for your next direction.")
+	get_input()
+	gps_aisle = detect_current_customer_aisle()
+	if gps_aisle < destination_aisle
+		please_walk("north")				// the aisles increase in number as they move in the northward direction.
+	else
+		please_walk("south")
+}
+		
+output("You have arrived at the indicated row and isle. Your item should be available nearby. Thank you.")

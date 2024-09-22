@@ -2,3 +2,20 @@
 # Add your pseudocode to this file below this line: #
 # ------------------------------------------------- #
 
+package_count = 0
+product_count = 0
+while (scanner.active())		// scanner is online, waiting for items to be scanned
+{
+	if (scanner.read_code()) 	// scanner can currently see a package
+	{
+		package_count++
+		scanner.clear()			// the assembly line advances, clear the indicator for the current package
+		product_count = package_count * 2
+		output("The current package number is: ", package_count, "  The current product count is: " product_count)
+	}
+	if(product_count % 50 == 0)	// the product count cleanly divides by 50
+	{
+		output("Time for a new case.")
+		initiate_case_change_procedure()
+	}	
+}
